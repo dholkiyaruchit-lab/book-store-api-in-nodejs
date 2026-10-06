@@ -34,10 +34,10 @@ async function startServer(){
     try {
         const connect = await connectDB();
 
-     if (!connect) {
-  return console.log("Database connection failed");
-}
-        console.log(`server is running on port ${port}`);
+ app.listen(port, () => {
+      console.log(`server running on port ${port}`);
+    });
+        
     } catch (error) {
          console.log(error.message);
           process.exit(1);
