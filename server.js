@@ -28,15 +28,15 @@ app.use((error, req, res, next) => {
 });
 
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 async function startServer(){
     try {
         const connect = await connectDB();
 
-        if(!connect){
-          return console.log(err.message);
-        }
+     if (!connect) {
+  return console.log("Database connection failed");
+}
         console.log(`server is running on port ${port}`);
     } catch (error) {
          console.log(error.message);
