@@ -1,5 +1,6 @@
 import httpError from "../middleware/httpError.js";
 import bookModel from "../model/book.model.js";
+import fs from "fs"
 
 const add = async (req, res, next) => {
   try {
