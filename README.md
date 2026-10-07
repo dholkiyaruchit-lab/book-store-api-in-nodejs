@@ -152,20 +152,22 @@ http://localhost:5000/book
 ### Create a Book
 
 ```http
-POST /book
-Content-Type: application/json
+POST /book/addBook
+Content-Type: multipart/form-data
 ```
 
-Example body:
+Send these fields as `multipart/form-data` (for example, using Postman form-data):
 
-```json
-{
-  "title": "The Alchemist",
-  "author": "Paulo Coelho",
-  "price": 299,
-  "category": "Fiction"
-}
-```
+| Key | Type | Example |
+|---|---|---|
+| `title` | Text | The Alchemist |
+| `author` | Text | Paulo Coelho |
+| `ISBN` | Text | 9780061122415 |
+| `description` | Text | A novel about following your dreams. |
+| `price` | Text | 299 |
+| `bookImage` | File | A JPEG or PNG image (maximum 5 MB) |
+
+Use the `bookImage` field name exactly; the API requires an image upload when creating a book.
 
 ---
 

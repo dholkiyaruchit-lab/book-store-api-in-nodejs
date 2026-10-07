@@ -8,8 +8,16 @@ const add = async (req, res, next) => {
 
       const bookImage = req.file?.path;
 
-    if (!title || !author || !ISBN || !description || !price || !bookImage) {
-      return next(new httpError(400, "all fields are required"));
+    if (
+      !title ||
+      !author ||
+      !ISBN ||
+      !description ||
+      price === undefined ||
+      price === "" ||
+      !bookImage
+    ) {
+      return next(new httpError("All fields, including a book image, are required", 400));
     }
 
     const book = await bookModel.create({
