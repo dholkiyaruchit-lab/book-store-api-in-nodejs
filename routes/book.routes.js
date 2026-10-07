@@ -7,6 +7,6 @@ const router = express.Router();
 router.post("/addBook", upload.single("bookImage"), bookController.add);
 router.get("/showAllBook",bookController.getAll);
 router.get("/getByBook/:id",bookController.getById);
-router.delete("/deleteBook",bookController.deleteBook);
+router.delete("/deleteBook/:id",bookController.deleteBook);
 
 export default router;
