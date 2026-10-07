@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/addBook", upload.single("bookImage"), bookController.add);
 router.get("/showAllBook",bookController.getAll);
-router.get("/getByBook",bookController.getById);
+router.get("/getByBook/:id",bookController.getById);
 router.delete("/deleteBook",bookController.deleteBook);
 
 export default router;
