@@ -4,7 +4,7 @@ import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
-router.post("/addBook", uploads.single("bookImage"), bookController.add);
+router.post("/addBook", upload.single("bookImage"), bookController.add);
 router.get("/showAllBook",bookController.getAll);
 router.get("/getByBook",bookController.getById);
 router.delete("/deleteBook",bookController.deleteBook);

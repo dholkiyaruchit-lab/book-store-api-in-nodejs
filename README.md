@@ -91,13 +91,19 @@ npm install
 
 ## 🔐 Environment Variables
 
-Create a `.env` file in the root directory:
+Copy `.env.example` to `.env` in the root directory, then set `MONGO_URI` to
+your MongoDB connection string. The example uses a local MongoDB instance:
 
 ```env
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb://127.0.0.1:27017/book-store
+PORT=5000
 ```
 
-Replace `your_mongodb_connection_string` with your MongoDB connection string.
+On Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
 
 > ⚠️ Never commit your `.env` file or database credentials to GitHub.
 
