@@ -1,6 +1,5 @@
 import httpError from "../middleware/httpError.js";
 import bookModel from "../model/book.model.js";
-import fs from "fs"
 
 const add = async (req, res, next) => {
   try {
@@ -75,24 +74,22 @@ const getById = async (req, res, next) => {
 };
 const deleteBook = async (req, res, next) => {
   try {
-    const deleteBooks = await bookModel.findByIdAndDelete(id);
+    const { id } = req.params;
+    const deletedBook = await bookModel.findByIdAndDelete(id);
 
-    if (!books) {
-      return next(new httpError(404, "no books found"));
+    if (!deletedBook) {
+      return next(new httpError("Book not found", 404));
     }
-  const filesToDelete = [deleteBooks.bookImage];
 
     res.status(200).json({
       success: true,
-      message: "all book data fetched successfully",
-      deleteBooks,
+      message: "Book deleted successfully",
+      book: deletedBook,
     });
   } catch (error) {
     return next(new httpError(error.message, 500));
   }
 };
-const update = async(req,res,next)=>{
-    
-}
+
 
 export default { add,getAll,getById,deleteBook };
